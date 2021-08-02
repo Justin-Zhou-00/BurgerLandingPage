@@ -6,11 +6,17 @@ import './NavBarData';
 
  const NavBar = () => {
     const [showLinks, setShowLinks] = useState(false);
+    const [hovered, setHovered] = useState(false);
     const linksContainerRef = useRef(null);
     const linksRef = useRef(null);
     const toggleLinks = () => {
       setShowLinks(!showLinks);
     };
+    // Toggles the hovered effect over the navbar
+    const toggleActive = () =>{
+        setHovered(!hovered);
+    }
+    // Calculates the height of link in mobile width, to add the links dynamically generated
     useEffect(() => {
       const linksHeight = linksRef.current.getBoundingClientRect().height;
       if (showLinks) {
@@ -28,12 +34,22 @@ import './NavBarData';
           </button>
         </div>
         <div className='links-container' ref={linksContainerRef}>
-          <ul className='links' ref={linksRef}>
+        {/* Adding the toggle on the links */}
+        <ul 
+            className ='links' 
+            onMouseEnter={toggleActive} 
+            onMouseLeave={toggleActive} 
+            ref={linksRef} 
+        >
+        {/* Destructuring links from data file using mapping*/}
             {links.map((link) => {
               const { id, url, text } = link;
               return (
                 <li key={id}>
-                  <a href={url}>{text}</a>
+                    {/* Setting the CSS for the hovered nav link 
+                    When the nav bar is hovered then only the hovered item is highlighted,
+                    the rest of the nav links have their opacities reduced by 50%*/}
+                  <a className= {hovered ? 'hovered-nav' : ''} href={url} >{text}</a>
                 </li>
               );
             })} 
