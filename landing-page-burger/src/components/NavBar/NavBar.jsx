@@ -3,7 +3,7 @@ import {FaBars} from 'react-icons/fa'
 import { links } from './NavBarData';
 import './NavBar.css';
 import './NavBarData';
-
+import logo from '../../images/Carls_Jr_Logo_REV.png'
  const NavBar = () => {
     const [showLinks, setShowLinks] = useState(false);
     const [hovered, setHovered] = useState(false);
@@ -29,10 +29,12 @@ import './NavBarData';
          <nav>
       <div className='nav-center'>
         <div className='nav-header'>
+          <img className='logo' src={logo} alt="logo" />
           <button className='nav-toggle' onClick={toggleLinks}>
             <FaBars />
           </button>
         </div>
+        
         <div className='links-container' ref={linksContainerRef}>
         {/* Adding the toggle on the links */}
         <ul 

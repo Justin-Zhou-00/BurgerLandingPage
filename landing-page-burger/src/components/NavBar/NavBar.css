@@ -36,6 +36,7 @@ nav{
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
+    
 }
 .nav-toggle {
     font-size: 1.5rem;
@@ -44,6 +45,7 @@ nav{
     border-color: transparent;
     transition: var(--transition);
     cursor: pointer;
+    padding-inline-end: 1rem;
   }
 
 
@@ -55,18 +57,23 @@ nav{
     display: block;
     text-transform: uppercase;
     font-family: 'Teko', sans-serif;
-    transition: var(--transistion);
+    transition: opacity 100ms 100ms ease-out;
     margin-inline: 3rem;
     
 }
 .hovered-nav{
-    opacity: 0.5;
-    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    opacity: 0.3; 
 }
 .links a:hover {
     opacity: 1;
+}   
+
+.logo{
+    max-width: 250px;
+    display: flex;
     
-  }
+}  
+ 
 .links-container {
     height: 0;
     overflow: hidden;
@@ -78,7 +85,7 @@ nav{
 
 @media screen and (min-width: 800px) {
     .nav-center {
-      max-width: 1170px;
+      
       margin: 0 auto;
       display: flex;
       align-items: center;
